@@ -27,20 +27,23 @@ export async function GET() {
     return NextResponse.json({
       month: currentMonth,
       data: allColleges},
-      headers: {
+      {headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type",
-      },
+      }
+    },
     );
   } catch (err) {
     return NextResponse.json({ error: err.message }, { status: 500 },
-    headers: {
+    { headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type",
-      },
+      }
+    },
     );
   }
 }
+
 
