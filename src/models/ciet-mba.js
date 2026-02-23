@@ -29,6 +29,14 @@ const CIETMbaSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+    total_reels: {
+      type: Number,
+      default: 0,
+    },
+    total_posters: {
+      type: Number,
+      default: 0,
+    },
     status: {
       type: String,
       enum: ["active", "inactive", "archived"],
