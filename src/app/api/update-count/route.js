@@ -122,6 +122,18 @@ export async function POST(req) {
         doc.posters += 1;
       }
     }
+    else if (posters === -1) {
+  // 🔽 DECREMENT (REMOVE UPLOAD)
+
+  if (doc.posters > 0) {
+    // ⭐ Reduce actual posters first
+    doc.posters -= 1;
+
+  } else {
+    // ⭐ If posters already 0 → increase pending
+    doc.pending_posters += 1;
+  }
+}
 
     await doc.save();
 
@@ -157,5 +169,6 @@ export async function OPTIONS() {
         },
   });
 }
+
 
 
