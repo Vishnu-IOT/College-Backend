@@ -68,6 +68,8 @@ export async function POST() {
 
       currentDoc.pending_reels += carryReels;
       currentDoc.pending_posters += carryPosters;
+      currentDoc.total_reels += carryReels + 6;
+      currentDoc.total_posters += carryPosters + 15;
 
       await currentDoc.save();
 
@@ -75,6 +77,8 @@ export async function POST() {
         college: collegeName,
         pending_reels: currentDoc.pending_reels,
         pending_posters: currentDoc.pending_posters,
+        total_reels: currentDoc.total_reels,
+        total_posters: currentDoc.total_posters,
       });
     }
 
@@ -98,4 +102,5 @@ export async function POST() {
     });
   }
 }
+
 
