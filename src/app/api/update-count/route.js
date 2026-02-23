@@ -35,7 +35,13 @@ export async function POST(req) {
     if (!collegeObj) {
       return NextResponse.json(
         { message: 'Invalid college name' },
-        { status: 400 }
+        { status: 400 },
+      {headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type",
+      }
+    }
       );
     }
 
@@ -49,7 +55,13 @@ export async function POST(req) {
     if (!doc) {
       return NextResponse.json(
         { message: 'Create month first' },
-        { status: 400 }
+        { status: 400 },
+      {headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type",
+      }
+    }
       );
     }
 
@@ -63,7 +75,13 @@ export async function POST(req) {
         if (doc.reels >= 6) {
           return NextResponse.json(
             { message: 'Reels limit exceeded' },
-            { status: 400 }
+            { status: 400 },
+      {headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type",
+      }
+    }
           );
         }
         doc.reels += 1;
@@ -80,7 +98,13 @@ export async function POST(req) {
         if (doc.posters >= 15) {
           return NextResponse.json(
             { message: 'Posters limit exceeded' },
-            { status: 400 }
+            { status: 400 },
+      {headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type",
+      }
+    }
           );
         }
         doc.posters += 1;
@@ -92,8 +116,21 @@ export async function POST(req) {
     return NextResponse.json({
       message: 'Upload updated successfully',
       data: doc,
+    },
+      {headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type",
+      }
     });
   } catch (err) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return NextResponse.json({ error: err.message }, { status: 500 },
+      {headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type",
+      }
+    });
   }
 }
+
