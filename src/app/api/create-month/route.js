@@ -60,14 +60,33 @@ export async function POST() {
         message: 'Month created for all colleges',
         data: results,
         month: currentMonth,
-      });
+      },
+      {headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type",
+      }
+    });
     } else {
       return NextResponse.json(
         { message: 'Current Month already Exists!' },
-        { status: 409 }
+        { status: 409 },
+      {headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type",
+      }
+    }
       );
     }
   } catch (err) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return NextResponse.json({ error: err.message }, { status: 500 },
+      {headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type",
+      }
+    });
   }
 }
+
