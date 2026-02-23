@@ -134,3 +134,14 @@ export async function POST(req) {
   }
 }
 
+// ⭐ Handle preflight request
+export async function OPTIONS() {
+  return new NextResponse(null, {
+    status: 200,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type',
+        },
+  });
+}
