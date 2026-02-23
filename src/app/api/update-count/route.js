@@ -87,6 +87,28 @@ export async function POST(req) {
         doc.reels += 1;
       }
     }
+    else{
+      if (doc.pending_reels > 0) {
+        // ⭐ Reduce pending first
+        doc.pending_reels += 1;
+      } else {
+        // ⭐ Then increment actual reels
+        if (doc.reels >= 6) {
+          return NextResponse.json(
+            { message: 'Reels limit exceeded' },
+            { status: 400 },
+      {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type',
+        },
+      }
+          );
+        }
+        doc.reels -= 1;
+      }
+    }
 
     // 🏆 POSTERS UPLOAD LOGIC
     if (posters === 1) {
@@ -145,3 +167,4 @@ export async function OPTIONS() {
         },
   });
 }
+
